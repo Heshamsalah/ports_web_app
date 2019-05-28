@@ -7,12 +7,13 @@ class App extends Component {
   } 
 
   componentDidMount() {
-    fetch('https:hsalah.net/ports_app/', { 
-      method: 'get', 
+    fetch('https:hsalah.net/ports_app/?&page=1&per=30', {
+      method: 'get',
       headers: new Headers({
         'Authorization': "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE1NTkwODI2NzV9.-YOAxjnp1B3cyxIepM7s_My6391NgjnpO_jA2fR-IhI", 
-        'Content-Type': 'application/json'
-    })})
+        'Content-Type': 'application/json',
+      })
+    })
     .then(res => res.json())
     .then(data => {
       this.setState({ ports: data['data'] })

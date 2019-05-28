@@ -2,14 +2,16 @@ import React from 'react'
 
 const Ports = ({ ports, loggedIn }) => {
   let divStyle = {
-    border: '1px solid black'
+    border: '1px solid black',
+    backgroundColor: 'black',
+    color: 'white'
   };
   let cstyle = {
     padding: '10px',
     backgroundColor: 'yellow'
   };
 
-  if(loggedIn) {
+  if(true) {
     return (
       <div style={cstyle}>
         <center><h1>Ports List</h1></center>
