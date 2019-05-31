@@ -1,8 +1,29 @@
 import React from 'react'
 import { Table } from 'semantic-ui-react'
 
-const Ports = ({ ports, loggedIn }) => {
-  if(true) {
+class Ports extends React.Component {
+  state = {
+    ports: []
+  }
+
+  componentDidMount() {
+    fetch('https://hsalah.net/ports_app/?&page=1&per=30', {
+      method: 'get',
+      headers: new Headers({
+        'Authorization': localStorage.getItem('accessToken'),
+        'Content-Type': 'application/json',
+      })
+    })
+    .then(res => res.json())
+    .then(data => {
+      this.setState({ ports: data['data'] })
+    })
+    .catch(console.log)
+  }
+
+  render() {
+    const {ports} = this.state;
+
     return (
       <Table celled selectable compact>
         <Table.Header fullWidth>
@@ -49,14 +70,6 @@ const Ports = ({ ports, loggedIn }) => {
       </Table>
     )
   }
-  else
-  {
-    return (
-      <div class="container">
-        <center><h1>LogIn</h1></center>
-      </div>
-    );
-  }
-};
+}
 
-export default Ports
+export default Ports;
